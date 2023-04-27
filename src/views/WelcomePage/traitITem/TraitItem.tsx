@@ -9,6 +9,7 @@ const TraitItem = ({
 
             <div className="flex justify-between text-lg font-bold my-2">
                 <p className="text-white">#{item?.tokenId}</p>
+                <p className="text-[#3ea7ff]">Fee: {item?.commission}%</p>
                 <p className="text-[#e16d2d]">#{item?.name}</p>
             </div>
 
