@@ -32,22 +32,22 @@ const ConfirmModal = ({
     // confirmMint
 }: ModalProps) => {
     const [fields, errors, form]: any = useFormInputValidation({
-        customer_name: "",
+        name: "",
         uri: "",
         maxQuantity: 0,
         tokenId: 0,
         price: 0,
         sponsor: "",
-        whitelisted: "",
+        commission: 0,
         expiryDate: "",
       }, {
-        customer_name: "required",
+        name: "required",
         uri: "required",
         maxQuantity: "required|numeric",
         tokenId: "required|numeric",
         price: "required|numeric",
         sponsor: "required",
-        whitelisted: "required",
+        commission: "required|numeric",
         expiryDate: "required",
     });
 
@@ -86,13 +86,13 @@ const ConfirmModal = ({
                     <div className='flex'>
                         <label className='text-white w-[120px]'>name:</label>
                             <Input
-                                name="customer_name"
+                                name="name"
                                 onBlur={form.handleBlurEvent}
                                 onChange={form.handleChangeEvent}
-                                value={fields.customer_name}
+                                value={fields.name}
                             />
                     </div>
-                    <label className="error text-[red] ml-[60px]"> {errors.customer_name ? errors.customer_name : ""}</label>
+                    <label className="error text-[red] ml-[60px]"> {errors.name ? errors.name : ""}</label>
                 
                     <div className='flex'>
                         <label className='text-white w-[120px]'>uri:</label>
@@ -150,15 +150,15 @@ const ConfirmModal = ({
                     <label className="error text-[red] ml-[60px]">{errors.sponsor ? errors.sponsor: ""}</label>
 
                     <div className='flex'>
-                        <label className='text-white w-[120px]'>whitelisted:</label>
+                        <label className='text-white w-[120px]'>commission:</label>
                         <Input
-                            name="whitelisted"
+                            name="commission"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.whitelisted}
+                            value={fields.commission}
                         />
                     </div>
-                    <label className="error text-[red] ml-[60px]">{errors.whitelisted ? errors.whitelisted : ""}</label>
+                    <label className="error text-[red] ml-[60px]">{errors.commission ? errors.commission : ""}</label>
 
                     <div className='flex'>
                         <label className='text-white w-[120px]'>expiryDate:</label>

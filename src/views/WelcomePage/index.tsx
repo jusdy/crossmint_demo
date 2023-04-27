@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useWeb3React } from "@web3-react/core"
 import ConfirmModal from './ConfirmModal';
 import TraitItem from './traitITem/TraitItem';
+import { ToastContainer, toast } from "react-toastify";
 
 const WelcomePage = () => {
     const { active, account, activate, deactivate, chainId } = useWeb3React()
@@ -9,8 +10,26 @@ const WelcomePage = () => {
     const [ isLoadingCreate, setLoadingCreate ] = useState<boolean>(false);
     const [ salesItems, setSalesItems ] = useState<any>();
 
-    const onCreateNewTrait = (fields: any) => {
+    const onCreateNewTrait = async (fields: any) => {
+        console.log(fields)
         setLoadingCreate(true);
+        await fetch("http://54.67.4.219:9000/trait/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(fields)
+        }).then((res) => {
+            setLoadingCreate(false);
+            toast.success("Successfully put the trait on sales list", {
+                autoClose: 5000,
+            });
+        }).catch((err) => {
+            toast.error("Something went wrong", {
+                autoClose: 5000,
+            });
+            setLoadingCreate(false);
+        })
     }
 
     useEffect(() => {
@@ -28,17 +47,29 @@ const WelcomePage = () => {
             <button className="transition-all text-white bg-[#0081f9] p-2 font-bold text-sm hover:text-[black] hover:bg-[#1f9bde] duration-300 sm:text-2xl"
             onClick={() => setCreateTraitOpen(true)}
             >
-                Create a Trait
+                Put on Sales List
             </button>
 
-            <div className='flex gap-x-10 mt-10'>
+            <div className='flex flex-wrap gap-10 mt-10'>
             {salesItems?.map((item: any, key: number) => (
                 <TraitItem item={item} key={key}/>
             ))}
             </div>
 
             <ConfirmModal isModal={isOpenCreateTrait} closeModal={() => setCreateTraitOpen(false)} isLoading={isLoadingCreate} onCreateNewTrait={onCreateNewTrait}/>
-
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
+            <ToastContainer />
         </div>
     )
 }//0xeb114626318aC5e7827c879dc2F9C5a549FF4bb9
