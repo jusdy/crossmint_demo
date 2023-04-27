@@ -11,7 +11,10 @@ const WelcomePage = () => {
     const [ salesItems, setSalesItems ] = useState<any>();
 
     const onCreateNewTrait = async (fields: any) => {
-        console.log(fields)
+        fields.maxQuantity = Number(fields.maxQuantity);
+        fields.price = Number(fields.price);
+        fields.commission = Number(fields.commission);
+        fields.tokenId = Number(fields.tokenId);
         setLoadingCreate(true);
         await fetch("http://54.67.4.219:9000/trait/create", {
             method: "POST",
