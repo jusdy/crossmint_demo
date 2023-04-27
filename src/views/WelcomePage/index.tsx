@@ -10,7 +10,7 @@ const WelcomePage = () => {
         setLoadingCreate(true);
     }
     return (
-        <div className="grow pt-[200px]">
+        <div className="grow p-[100px]">
             <button className="transition-all text-white bg-[#0081f9] p-2 font-bold text-sm hover:text-[black] hover:bg-[#1f9bde] duration-300 sm:text-2xl"
             onClick={() => setCreateTraitOpen(true)}
             >

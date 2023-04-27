@@ -29,7 +29,6 @@ const ConfirmModal = ({
     // isConfirm=false,
     onCreateNewTrait,
     closeModal,
-    // confirmMint
 }: ModalProps) => {
     const [fields, errors, form]: any = useFormInputValidation({
         customer_name: "",
