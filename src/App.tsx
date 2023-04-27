@@ -6,6 +6,7 @@ import AppRoutes from 'routes';
 import ErrorPage from 'views/Error';
 import SuspensePage from 'views/Suspense';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   function getLibrary(provider: any) {
