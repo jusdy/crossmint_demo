@@ -8,7 +8,7 @@ interface ModalProps {
     isLoading: boolean;
     // isConfirm: boolean;
     closeModal: () => void;
-    onCreateNewTrait: () => void;
+    onCreateNewTrait: (fields: any) => void;
 }
 
 const customStyles = {
@@ -51,9 +51,12 @@ const ConfirmModal = ({
         expiryDate: "required",
     });
 
-    const onSubmit = (e: any) => {
+    const onSubmit = async (e: any) => {
         e.preventDefault();
-        onCreateNewTrait();
+        const isValid = await form.validate(e);
+        if (isValid) {
+            onCreateNewTrait(fields);
+        }
     }
 
     return (
@@ -86,7 +89,7 @@ const ConfirmModal = ({
                                 name="customer_name"
                                 onBlur={form.handleBlurEvent}
                                 onChange={form.handleChangeEvent}
-                                value={fields.phone_number}
+                                value={fields.customer_name}
                             />
                     </div>
                     <label className="error text-[red] ml-[60px]"> {errors.customer_name ? errors.customer_name : ""}</label>
@@ -97,7 +100,7 @@ const ConfirmModal = ({
                             name="uri"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.uri}
                         />
                     </div>
                     <label className="error text-[red] ml-[60px]">{errors.uri ? errors.uri : ""}</label>
@@ -108,7 +111,7 @@ const ConfirmModal = ({
                             name="maxQuantity"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.maxQuantity}
                         />
                     </div>
                     <label className="error text-[red] ml-[60px]">{errors.maxQuantity ? errors.maxQuantity: ""}</label>
@@ -119,7 +122,7 @@ const ConfirmModal = ({
                             name="tokenId"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.tokenId}
                         />
                     </div>
                     <label className="error text-[red] ml-[60px]">{errors.tokenId ? errors.tokenId: ""}</label>
@@ -130,32 +133,32 @@ const ConfirmModal = ({
                             name="price"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.price}
                         />
                     </div>
                     <label className="error text-[red] ml-[60px]">{errors.price ? errors.price: ""}</label>
 
                     <div className='flex'>
-                        <label className='text-white w-[120px]'>sponser:</label>
+                        <label className='text-white w-[120px]'>sponsor:</label>
                         <Input
-                            name="sponser"
+                            name="sponsor"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.sponsor}
                         />
                     </div>
-                    <label className="error text-[red] ml-[60px]">{errors.sponser ? errors.sponser: ""}</label>
+                    <label className="error text-[red] ml-[60px]">{errors.sponsor ? errors.sponsor: ""}</label>
 
                     <div className='flex'>
-                        <label className='text-white w-[120px]'>whiteListed:</label>
+                        <label className='text-white w-[120px]'>whitelisted:</label>
                         <Input
-                            name="whiteListed"
+                            name="whitelisted"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.whitelisted}
                         />
                     </div>
-                    <label className="error text-[red] ml-[60px]">{errors.whiteListed ? errors.whiteListed: ""}</label>
+                    <label className="error text-[red] ml-[60px]">{errors.whitelisted ? errors.whitelisted : ""}</label>
 
                     <div className='flex'>
                         <label className='text-white w-[120px]'>expiryDate:</label>
@@ -164,7 +167,7 @@ const ConfirmModal = ({
                             type="date"
                             onBlur={form.handleBlurEvent}
                             onChange={form.handleChangeEvent}
-                            value={fields.phone_number}
+                            value={fields.expiryDate}
                         />
                     </div>
                     <label className="error text-[red] ml-[60px]">{errors.expiryDate ? errors.expiryDate: ""}</label>

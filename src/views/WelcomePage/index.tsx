@@ -5,7 +5,8 @@ const WelcomePage = () => {
     const [ isOpenCreateTrait, setCreateTraitOpen ] = useState<boolean>(false);
     const [ isLoadingCreate, setLoadingCreate ] = useState<boolean>(false);
 
-    const onCreateNewTrait = () => {
+    const onCreateNewTrait = (fields: any) => {
+        
         setLoadingCreate(true);
     }
     return (
