@@ -38,7 +38,7 @@ const WelcomePage = () => {
     useEffect(() => {
         if(active) {
             ;(async () => {
-                const response = await fetch(`http://54.67.4.219:9000/trait/all?walletAddress=${account}`)
+                const response = await fetch(`http://54.67.4.219:9000/trait/list?walletAddress=${account}`)
                 const data = await response.json();
                 setSalesItems(data);
             })();
