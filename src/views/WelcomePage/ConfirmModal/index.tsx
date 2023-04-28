@@ -31,8 +31,8 @@ const ConfirmModal = ({
     closeModal,
 }: ModalProps) => {
     const [fields, errors, form]: any = useFormInputValidation({
-        name: "",
-        uri: "",
+        // name: "",
+        // uri: "",
         maxQuantity: 0,
         tokenId: 0,
         price: 0,
@@ -40,8 +40,8 @@ const ConfirmModal = ({
         commission: 0,
         expiryDate: "",
       }, {
-        name: "required",
-        uri: "required",
+        // name: "required",
+        // uri: "required",
         maxQuantity: "required|numeric",
         tokenId: "required|numeric",
         price: "required|numeric",
@@ -82,7 +82,7 @@ const ConfirmModal = ({
                     autoComplete="off"
                     onSubmit={onSubmit}
                 >
-                    <div className='flex'>
+                    {/* <div className='flex'>
                         <label className='text-white w-[120px]'>name:</label>
                             <Input
                                 name="name"
@@ -91,9 +91,9 @@ const ConfirmModal = ({
                                 value={fields.name}
                             />
                     </div>
-                    <label className="error text-[red] ml-[60px]"> {errors.name ? errors.name : ""}</label>
+                    <label className="error text-[red] ml-[60px]"> {errors.name ? errors.name : ""}</label> */}
                 
-                    <div className='flex'>
+                    {/* <div className='flex'>
                         <label className='text-white w-[120px]'>uri:</label>
                         <Input
                             name="uri"
@@ -102,7 +102,7 @@ const ConfirmModal = ({
                             value={fields.uri}
                         />
                     </div>
-                    <label className="error text-[red] ml-[60px]">{errors.uri ? errors.uri : ""}</label>
+                    <label className="error text-[red] ml-[60px]">{errors.uri ? errors.uri : ""}</label> */}
 
                     <div className='flex'>
                         <label className='text-white w-[120px]'>Quantity:</label>

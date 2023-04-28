@@ -7,10 +7,11 @@ import ErrorPage from 'views/Error';
 import SuspensePage from 'views/Suspense';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { Web3Provider } from '@ethersproject/providers';
 
 function App() {
   function getLibrary(provider: any) {
-    return new Web3(provider)
+    return new Web3Provider(provider)
   }
   
   return (

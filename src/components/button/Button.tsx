@@ -10,7 +10,10 @@ const Button = ({
     children
 }: ButtonProps) => {
     return (
-        <button className={`${className} border border-[#AAAAAA99] bg-[#232329] rounded-lg transition hover:bg-[#ffffff00]`}>
+        <button
+            className={`${className} border border-[#AAAAAA99] bg-[#232329] rounded-lg transition hover:bg-[#ffffff00]`}
+            onClick={onClick}
+        >
             {children} 
         </button>
     )
