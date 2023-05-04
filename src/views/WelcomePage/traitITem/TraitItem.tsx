@@ -1,7 +1,6 @@
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core"
 import { trait_shop_address } from "constant/address";
-import { Contract } from '@ethersproject/contracts';
 import TraitShopABI from 'abi/TraitShop.json';
 import Button from "components/button/Button";
 
@@ -10,11 +9,6 @@ const TraitItem = ({
 }: any) => {
     const { library } = useWeb3React();
     const onBuyETH = () => {
-        const TraitShopContract = new Contract(
-            trait_shop_address,
-            TraitShopABI,
-            library
-        );
 
     }
     return (
