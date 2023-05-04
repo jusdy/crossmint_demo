@@ -5,7 +5,7 @@ import TraitItem from './traitITem/TraitItem';
 import { ToastContainer, toast } from "react-toastify";
 
 const WelcomePage = () => {
-    const { active, account, chainId } = useWeb3React()
+    const { active, account, activate, deactivate, chainId } = useWeb3React()
     const [ isOpenCreateTrait, setCreateTraitOpen ] = useState<boolean>(false);
     const [ isLoadingCreate, setLoadingCreate ] = useState<boolean>(false);
     const [ salesItems, setSalesItems ] = useState<any>();
@@ -38,7 +38,7 @@ const WelcomePage = () => {
     useEffect(() => {
         if(active) {
             ;(async () => {
-                const response = await fetch(`http://54.67.4.219:9000/trait/all?walletAddress=${account}`)
+                const response = await fetch(`http://54.67.4.219:9000/trait/list?walletAddress=${account}`)
                 const data = await response.json();
                 setSalesItems(data);
             })();
