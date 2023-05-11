@@ -1,5 +1,6 @@
 import { injected } from "components/wallet/Connectors"
 import { useWeb3React } from "@web3-react/core"
+import { Link } from "react-router-dom"
 
 declare global {
     interface Window {
@@ -47,6 +48,11 @@ const Header = () => {
             <button className="transition-all text-white bg-[#f9b500] py-2 sm:px-6 px-2 font-bold text-sm hover:text-[black] hover:bg-[#1f9bde] duration-300 sm:text-2xl" onClick={active ? disconnect : connect}>
                 {active ? getShortAddress(account) : "Connect Wallet"}
             </button>
+
+            <div className="text-white flex gap-6 font-bold text-xl">
+                <Link to={"/myitem"}>My Items</Link>
+                <Link to={"/salelist"}>Sale List</Link>
+            </div>
         </div>
     )
 }

@@ -1,132 +1,81 @@
 [
   {
+    "type": "function",
+    "name": "mint",
+    "constant": false,
+    "stateMutability": "payable",
+    "payable": true,
     "inputs": [
-      { "internalType": "address", "name": "_bapGenesis", "type": "address" },
-      { "internalType": "address", "name": "_bapApes", "type": "address" }
+      {
+        "type": "tuple",
+        "name": "item",
+        "components": [
+          { "type": "address", "name": "collectionAddress" },
+          { "type": "uint256", "name": "tokenId" }
+        ]
+      },
+      { "type": "address", "name": "_to" }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "outputs": []
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "buyer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "quantity",
-        "type": "uint256"
-      }
-    ],
-    "name": "ApesMinted",
-    "type": "event"
+    "type": "constructor",
+    "payable": false,
+    "inputs": [{ "type": "address", "name": "_secret" }]
   },
   {
+    "type": "event",
     "anonymous": false,
+    "name": "Minted",
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "buyer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "quantity",
-        "type": "uint256"
-      }
-    ],
-    "name": "BullsMinted",
-    "type": "event"
+      { "type": "address", "name": "buyer", "indexed": true },
+      { "type": "uint256", "name": "price", "indexed": false },
+      { "type": "uint256", "name": "tokenId", "indexed": false }
+    ]
   },
   {
+    "type": "event",
     "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
     "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
     "inputs": [
-      { "internalType": "uint256[]", "name": "_tokenIds", "type": "uint256[]" },
-      { "internalType": "address", "name": "_to", "type": "address" }
-    ],
-    "name": "apesMint",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
+      { "type": "address", "name": "previousOwner", "indexed": true },
+      { "type": "address", "name": "newOwner", "indexed": true }
+    ]
   },
   {
-    "inputs": [
-      { "internalType": "uint256[]", "name": "_tokenIds", "type": "uint256[]" },
-      { "internalType": "address", "name": "_to", "type": "address" }
-    ],
-    "name": "bullsMint",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
+    "type": "function",
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "constant": true,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
+    "payable": false,
     "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
     "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "constant": false,
+    "payable": false,
+    "inputs": [],
+    "outputs": []
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
-    ],
+    "type": "function",
     "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "constant": false,
+    "payable": false,
+    "inputs": [{ "type": "address", "name": "newOwner" }],
+    "outputs": []
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_address", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
-    ],
+    "type": "function",
     "name": "withdrawETH",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "constant": false,
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "_address" },
+      { "type": "uint256", "name": "amount" }
+    ],
+    "outputs": []
   }
 ]

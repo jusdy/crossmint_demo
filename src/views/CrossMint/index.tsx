@@ -1,22 +1,32 @@
-import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
+import NFTItem from "./item";
 
 const CrossMint = () => {
-    const { account, active } = useWeb3React();
-    const tokenId = 9017;
-    const mintPrice = "0.0001";
+    const { active } = useWeb3React();
+    const [myItems, setMyItems] = useState<any>([]);
+
+    useEffect(() => {
+        ;(async () => {
+            const response = await fetch(`http://localhost:5000/demo/list`)
+            const data = await response.json();
+            console.log(data)
+            setMyItems(data.data);
+        })();
+    },[])
+
+    const updateMyItems = (tokenId: number) => {
+        setMyItems(myItems.filter((item: any) => item.tokenId !== tokenId))
+    }
 
     return (
-        <>
+        <div className="flex flex-wrap gap-10 grow p-[50px] bg-[#1e1e24]">
             {active &&
-                <CrossmintPayButton
-                className="mt-10 w-[300px]"
-                clientId="903868b2-9ace-42df-98bc-ffe102d6b9b8"
-                mintConfig={{"type":"erc-721","totalPrice": mintPrice,"_tokenIds": Array(1).fill(tokenId)}}
-                environment="staging"
-                mintTo={account || ""}
-            />}
-        </>
+                myItems?.map((item: any, key: number) => (
+                    <NFTItem item={item} key={key} updateItem={(tokenId: number) => updateMyItems(tokenId)}/>
+                ))
+            }
+        </div>
     )
 }
 
