@@ -12,6 +12,7 @@ const SaleItem = ({item}: any) => {
                 <p className="text-[#e16d2d]">{item?.name}</p>
             </div>
             <CrossmintPayButton
+                className="!bg-[#572f03]"
                 clientId="903868b2-9ace-42df-98bc-ffe102d6b9b8"
                 mintConfig={{"type":"erc-721","totalPrice":"0.00001","item":[item?.collectionAddress, item.tokenId],"quantity":1}}
                 environment="staging"
