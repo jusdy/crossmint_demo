@@ -12,7 +12,7 @@ const NFTItem = ({item, updateItem}: any) => {
             const tx = await ApesContract.approve(minter, item?.tokenId);
             await tx.wait(1);
             await updateItem(item.tokenId);
-            await fetch("http://localhost:5000/demo/remove", {
+            await fetch("http://135.181.11.13:5000/demo/remove", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

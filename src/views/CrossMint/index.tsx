@@ -8,7 +8,7 @@ const CrossMint = () => {
 
     useEffect(() => {
         ;(async () => {
-            const response = await fetch(`http://localhost:5000/demo/list`)
+            const response = await fetch(`http://135.181.11.13:5000/demo/list`)
             const data = await response.json();
             console.log(data)
             setMyItems(data.data);

@@ -7,7 +7,7 @@ const SaleItems = () => {
     const { active } = useWeb3React();
     useEffect(() => {
         ;(async () => {
-            const response = await fetch(`http://localhost:5000/demo/salelist`)
+            const response = await fetch(`http://135.181.11.13:5000/demo/salelist`)
             const data = await response.json();
             console.log(data)
             setSaleItems(data.data);
